@@ -6,7 +6,7 @@
 /*   By: luna <luna@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:23:29 by luisanch          #+#    #+#             */
-/*   Updated: 2023/12/16 22:37:35 by luna             ###   ########.fr       */
+/*   Updated: 2023/12/17 01:28:06 by luna             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ t_list	*find_minnum(t_list *box);
 void	first_boxnum(t_list **a);
 void	inbox_ordering(t_list **a, t_list **b);
 long	ft_atoi(char *str);
-size_t	ft_line_count(const char *s, char c);
-char	*ft_linedata(const char *s, size_t start, size_t finish);
-void	ft_fill_line(char **dest, const char *s, char c);
-char	**ft_split(const char *s, char c);
+char *ft_strncpy(char *s1, char *s2, int n);
+char	**ft_split(char *str, char c);
 size_t	ft_strlen(const char *s);
 
 #endif
