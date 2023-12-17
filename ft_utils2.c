@@ -3,88 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luna <luna@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jaizpuru <jaizpuru@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:25:16 by luisanch          #+#    #+#             */
-/*   Updated: 2023/12/17 01:30:00 by luna             ###   ########.fr       */
+/*   Updated: 2023/12/17 15:15:24 by jaizpuru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	num_words(char *str, char c)
+size_t	ft_line_count(const char *s, char c)
 {
-	int		count;
-	int		stop;
+	size_t	x;
 
-	count = 0;
-	while (*str)
+	x = 0;
+	while (*s && *s == c)
+		s++;
+	while (*s)
 	{
-		stop = 0;
-		while (*str == c)
-			str++;
-		while (*str != c && *str)
-		{
-			if (stop == 0)
-			{
-				count++;
-				stop = 1;
-			}
-			str++;
-		}
+		x++;
+		while (*s && *s != c)
+			s++;
+		while (*s && *s == c)
+			s++;
 	}
-	return (count);
+	return (x);
 }
 
-static char	*get_next_word(char *str, char c)
+char	*ft_linedata(const char *s, size_t start, size_t finish)
 {
-	static int	cursor = 0;
-	char		*next_str;
-	int			len;
-	int			i;
+	char	*dest;
+	size_t	x;
 
-	len = 0;
-	i = 0;
-	while (str[cursor] == c)
-		cursor++;
-	while ((str[cursor + len] != c) && str[cursor + len])
-		len++;
-	next_str = malloc((size_t)len * sizeof(char) + 1);
-	if (NULL == next_str)
+	x = 0;
+	if (!s)
 		return (NULL);
-	while ((str[cursor] != c) && str[cursor])
-		next_str[i++] = str[cursor++];
-	next_str[i] = '\0';
-	return (next_str);
+	dest = malloc(sizeof(char) * (finish - start + 1));
+	if (!dest)
+		return (NULL);
+	while (start < finish)
+		dest[x++] = s[start++];
+	dest[x] = '\0';
+	return (dest);
 }
 
-char	**ft_split(char *str, char c)
+void	ft_fill_line(char **dest, const char *s, char c)
 {
-	int		words_number;
-	char	**splitted_array;
-	int		i;
+	size_t	x;
+	size_t	pos1;
+	size_t	start;
 
-	i = 0;
-	words_number = num_words(str, c);
-	if (!words_number)
-		exit(1);
-	splitted_array = malloc(sizeof(char *) * (size_t)(words_number + 2));
-	if (splitted_array == NULL)
-		return (NULL);
-	while (words_number-- >= 0)
+	x = 0;
+	pos1 = 0;
+	start = 0;
+	while (s[x])
 	{
-		if (0 == i)
+		while (s[x] && s[x] != c)
 		{
-			splitted_array[i] = malloc(sizeof(char));
-			if (splitted_array[i] == NULL)
-				return (NULL);
-			splitted_array[i++][0] = '\0';
-			continue ;
+			x++;
+			if (s[x] == c || x == ft_strlen(s))
+				dest[pos1++] = ft_linedata(s, start, x);
+		}	
+		while (s[x] && s[x] == c)
+		{
+			x++;
+			start = x;
 		}
-		splitted_array[i++] = get_next_word(str, c);
 	}
-	splitted_array[i] = NULL;
-	return (splitted_array);
+	dest[pos1] = NULL;
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**dest;
+
+	if (!s)
+		return (NULL);
+	dest = (char **)malloc(sizeof(char *) * (ft_line_count(s, c) + 1));
+	if (!dest)
+		return (NULL);
+	ft_fill_line(dest, s, c);
+	return (dest);
 }
 
 size_t	ft_strlen(const char *s)
