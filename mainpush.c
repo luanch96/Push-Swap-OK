@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainpush.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luna <luna@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: luisanch <luisanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:22:26 by luisanch          #+#    #+#             */
-/*   Updated: 2023/12/17 16:42:16 by luna             ###   ########.fr       */
+/*   Updated: 2023/12/19 19:51:51 by luisanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	else if (argc == 2) {
+	else if (argc == 2)
+	{
 		argv = ft_split(argv[1], ' ');
 		call_box(&a, argv, false);
 	}

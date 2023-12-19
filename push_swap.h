@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luna <luna@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: luisanch <luisanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:23:29 by luisanch          #+#    #+#             */
-/*   Updated: 2023/12/17 16:42:33 by luna             ###   ########.fr       */
+/*   Updated: 2023/12/19 19:52:20 by luisanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_list	*find_minnum(t_list *box);
 void	first_boxnum(t_list **a);
 void	inbox_ordering(t_list **a, t_list **b);
 long	ft_atoi(char *str);
-char *ft_strncpy(char *s1, char *s2, int n);
+char	*ft_strncpy(char *s1, char *s2, int n);
 char	**ft_split(const char *str, char c);
 size_t	ft_strlen(const char *s);
 

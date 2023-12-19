@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luna <luna@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: luisanch <luisanch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 00:25:16 by luisanch          #+#    #+#             */
-/*   Updated: 2023/12/17 17:58:00 by luna             ###   ########.fr       */
+/*   Updated: 2023/12/19 19:52:04 by luisanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_fill_line(char **dest, const char *s, char c)
 			x++;
 			if (s[x] == c || x == ft_strlen(s))
 				dest[pos1++] = ft_linedata(s, start, x);
-		}	
+		}
 		while (s[x] && s[x] == c)
 		{
 			x++;
